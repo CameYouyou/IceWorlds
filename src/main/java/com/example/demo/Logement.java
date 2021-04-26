@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Logement {
@@ -14,13 +12,18 @@ public class Logement {
     private int capaciteLogement;
     private int numeroLogement;
     private float prixLogement;
+    // Liens
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JoinTable(name = "avoir", joinColumns = @JoinColumn(name = "id_reservation"),inverseJoinColumns = @JoinColumn(name = "id_logement"))
+    private List<Reservation> reservation;
 
     // CONSTRUCTEUR
-    public Logement(String styleLogement, int capaciteLogement, int numeroLogement, float prixLogement) {
+    public Logement(String styleLogement, int capaciteLogement, int numeroLogement, float prixLogement, List<Reservation> reservation) {
         this.styleLogement = styleLogement;
         this.capaciteLogement = capaciteLogement;
         this.numeroLogement = numeroLogement;
         this.prixLogement = prixLogement;
+        this.reservation = reservation;
     }
 
     public Logement(){}
@@ -59,5 +62,12 @@ public class Logement {
     }
     public void setPrixLogement(float prixLogement) {
         this.prixLogement = prixLogement;
+    }
+
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
     }
 }

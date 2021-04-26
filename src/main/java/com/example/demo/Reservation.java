@@ -1,27 +1,36 @@
 package com.example.demo;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idReservation;
-    private String nbReservation;
+    @Column(name = "nb_personne")
+    private int nbReservation;
     private LocalDate startReservation;
     private LocalDate endReservation;
+    // Liens
+    // @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
+    @JoinColumn(name = "id_client")
+    private Client client;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "avoir", joinColumns = @JoinColumn(name = "id_reservation"),inverseJoinColumns = @JoinColumn(name = "id_logement"))
+    private List<Logement> logements;
 
     // CONSTRUCTEUR
-    public Reservation(String nbReservation, LocalDate startReservation, LocalDate endReservation) {
+    public Reservation(int nbReservation, LocalDate startReservation, LocalDate endReservation, Client client, List<Logement> logements) {
         this.nbReservation = nbReservation;
         this.startReservation = startReservation;
         this.endReservation = endReservation;
+        this.client = client;
+        this.logements = logements;
     }
+
     public Reservation(){}
 
     // GETTER & SETTER
@@ -32,10 +41,10 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public String getNbReservation() {
+    public int getNbReservation() {
         return nbReservation;
     }
-    public void setNbReservation(String nbReservation) {
+    public void setNbReservation(int nbReservation) {
         this.nbReservation = nbReservation;
     }
 
@@ -51,5 +60,19 @@ public class Reservation {
     }
     public void setEndReservation(LocalDate endReservation) {
         this.endReservation = endReservation;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public List<Logement> getLogements() {
+        return logements;
+    }
+    public void setLogements(List<Logement> logements) {
+        this.logements = logements;
     }
 }

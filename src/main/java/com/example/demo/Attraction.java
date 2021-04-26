@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Attraction {
@@ -11,16 +8,19 @@ public class Attraction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idAttraction;
     private String nomAttraction;
-    private int capaciteAttraction;
-    private String materielAttraction;
+    private int ageAttraction;
     private String descriptifAttraction;
+    // Liens
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_moniteur")
+    private Moniteur moniteur;
 
     // CONSTRUCTEUR
-    public Attraction(String nomAttraction, int capaciteAttraction, String materielAttraction, String descriptifAttraction) {
+    public Attraction(String nomAttraction, int ageAttraction, String descriptifAttraction, Moniteur moniteur) {
         this.nomAttraction = nomAttraction;
-        this.capaciteAttraction = capaciteAttraction;
-        this.materielAttraction = materielAttraction;
+        this.ageAttraction = ageAttraction;
         this.descriptifAttraction = descriptifAttraction;
+        this.moniteur = moniteur;
     }
 
     public Attraction (){}
@@ -40,18 +40,11 @@ public class Attraction {
         this.nomAttraction = nomAttraction;
     }
 
-    public int getCapaciteAttraction() {
-        return capaciteAttraction;
+    public int getAgeAttraction() {
+        return ageAttraction;
     }
-    public void setCapaciteAttraction(int capaciteAttraction) {
-        this.capaciteAttraction = capaciteAttraction;
-    }
-
-    public String getMaterielAttraction() {
-        return materielAttraction;
-    }
-    public void setMaterielAttraction(String materielAttraction) {
-        this.materielAttraction = materielAttraction;
+    public void setAgeAttraction(int ageAttraction) {
+        this.ageAttraction = ageAttraction;
     }
 
     public String getDescriptifAttraction() {
@@ -59,5 +52,12 @@ public class Attraction {
     }
     public void setDescriptifAttraction(String descriptifAttraction) {
         this.descriptifAttraction = descriptifAttraction;
+    }
+
+    public Moniteur getMoniteur() {
+        return moniteur;
+    }
+    public void setMoniteur(Moniteur moniteur) {
+        this.moniteur = moniteur;
     }
 }

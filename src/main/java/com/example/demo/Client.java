@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long idPersonne;
+    public Long idClient;
     private String nomClient;
     private String prenomClient;
     private String mailClient;
@@ -35,11 +35,11 @@ public class Client {
     public Client(){}
 
     // GETTER & SETTER
-    public Long getIdPersonne() {
-        return idPersonne;
+    public Long getIdClient() {
+        return idClient;
     }
-    public void setIdPersonne(Long idPersonne) {
-        this.idPersonne = idPersonne;
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
     }
 
     public String getNomClient() {

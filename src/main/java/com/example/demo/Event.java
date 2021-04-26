@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -17,17 +14,15 @@ public class Event {
     private LocalTime hstartEvent;
     private LocalDate dendEvent;
     private LocalTime hendEvent;
-    private String detailEvent;
     private String lieuEvent;
 
     // CONSTRUCTEUR
-    public Event(String nomEvent, LocalDate dstartEvent, LocalTime hstartEvent, LocalDate dendEvent, LocalTime hendEvent, String detailEvent, String lieuEvent) {
+    public Event(String nomEvent, LocalDate dstartEvent, LocalTime hstartEvent, LocalDate dendEvent, LocalTime hendEvent, String lieuEvent) {
         this.nomEvent = nomEvent;
         this.dstartEvent = dstartEvent;
         this.hstartEvent = hstartEvent;
         this.dendEvent = dendEvent;
         this.hendEvent = hendEvent;
-        this.detailEvent = detailEvent;
         this.lieuEvent = lieuEvent;
     }
 
@@ -74,13 +69,6 @@ public class Event {
     }
     public void setHendEvent(LocalTime hendEvent) {
         this.hendEvent = hendEvent;
-    }
-
-    public String getDetailEvent() {
-        return detailEvent;
-    }
-    public void setDetailEvent(String detailEvent) {
-        this.detailEvent = detailEvent;
     }
 
     public String getLieuEvent() {
