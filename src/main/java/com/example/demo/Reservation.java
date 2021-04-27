@@ -19,7 +19,7 @@ public class Reservation {
     @JoinColumn(name = "id_client")
     private Client client;
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "avoir", joinColumns = @JoinColumn(name = "id_reservation"),inverseJoinColumns = @JoinColumn(name = "id_logement"))
+    @JoinTable(name = "avoir", joinColumns = @JoinColumn(name = "id_logement"),inverseJoinColumns = @JoinColumn(name = "id_reservation"))
     private List<Logement> logements;
 
     // CONSTRUCTEUR

@@ -14,13 +14,18 @@ public class Attraction {
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "id_moniteur")
     private Moniteur moniteur;
+   // @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
+    @JoinColumn(name = "id_image")
+    private Image image;
 
     // CONSTRUCTEUR
-    public Attraction(String nomAttraction, int ageAttraction, String descriptifAttraction, Moniteur moniteur) {
+    public Attraction(String nomAttraction, int ageAttraction, String descriptifAttraction, Moniteur moniteur,Image image) {
         this.nomAttraction = nomAttraction;
         this.ageAttraction = ageAttraction;
         this.descriptifAttraction = descriptifAttraction;
         this.moniteur = moniteur;
+        this.image = image;
     }
 
     public Attraction (){}
@@ -59,5 +64,12 @@ public class Attraction {
     }
     public void setMoniteur(Moniteur moniteur) {
         this.moniteur = moniteur;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

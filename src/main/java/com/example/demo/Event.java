@@ -15,15 +15,20 @@ public class Event {
     private LocalDate dendEvent;
     private LocalTime hendEvent;
     private String lieuEvent;
+    // LIEN
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_image")
+    private Image image;
 
     // CONSTRUCTEUR
-    public Event(String nomEvent, LocalDate dstartEvent, LocalTime hstartEvent, LocalDate dendEvent, LocalTime hendEvent, String lieuEvent) {
+    public Event(String nomEvent, LocalDate dstartEvent, LocalTime hstartEvent, LocalDate dendEvent, LocalTime hendEvent, String lieuEvent, Image image) {
         this.nomEvent = nomEvent;
         this.dstartEvent = dstartEvent;
         this.hstartEvent = hstartEvent;
         this.dendEvent = dendEvent;
         this.hendEvent = hendEvent;
         this.lieuEvent = lieuEvent;
+        this.image = image;
     }
 
     public Event (){}
@@ -76,5 +81,12 @@ public class Event {
     }
     public void setLieuEvent(String lieuEvent) {
         this.lieuEvent = lieuEvent;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

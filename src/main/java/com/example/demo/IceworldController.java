@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,7 @@ public class IceworldController {
     }
 
     @GetMapping("afficherclients")
+    @CrossOrigin(origins = "*")
     public List<Client> afficherclients(){
         return iceworldService.recupeClient();
     }
@@ -38,7 +36,7 @@ public class IceworldController {
         return iceworldService.recupeResa();
     }
 
-    // Logement
+    // Logements
     @PostMapping("ajoutlogement")
     public void createLogement (@RequestBody Logement newLogement){
         iceworldService.addLogement(newLogement);
@@ -49,4 +47,16 @@ public class IceworldController {
     public List<Logement> afficherlogement(){
         return iceworldService.recupeLogement();
     }
+
+    // Attractions
+    @PostMapping("ajoutattraction")
+    public void createAttraction (@RequestBody Attraction newAttraction){
+        iceworldService.addAttraction(newAttraction);
+        System.out.println(newAttraction.getIdAttraction());
+    }
+    @GetMapping("afficherattraction")
+    public List<Attraction> afficherAttraction(){
+        return iceworldService.recupeAttraction();
+    }
+
 }

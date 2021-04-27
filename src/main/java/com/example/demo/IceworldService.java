@@ -19,7 +19,6 @@ public class IceworldService {
     public void addClient(Client newClient){
         clientRepository.save(newClient);
     }
-
     public List<Client> recupeClient() {
         return clientRepository.findAll();
     }
@@ -27,7 +26,6 @@ public class IceworldService {
     public void addReservation(Reservation newResa){
         reservationRepository.save(newResa);
     }
-
     public List<Reservation> recupeResa() {
         return reservationRepository.findAll();
     }
@@ -35,8 +33,14 @@ public class IceworldService {
     public void addLogement(Logement newLogement){
         logementRepository.save(newLogement);
     }
-
     public List<Logement> recupeLogement() {
         return logementRepository.findAll();
+    }
+
+    public void addAttraction(Attraction newAttraction){
+        attractionRepository.save(newAttraction);
+    }
+    public List<Attraction> recupeAttraction() {
+        return attractionRepository.findAll();
     }
 }
