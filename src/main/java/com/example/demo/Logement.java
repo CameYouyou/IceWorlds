@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Logement {
     // Liens
     @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(name = "avoir", joinColumns = @JoinColumn(name = "id_reservation"),inverseJoinColumns = @JoinColumn(name = "id_logement"))
+    @JsonIgnore
     private List<Reservation> reservation;
 
     // CONSTRUCTEUR
