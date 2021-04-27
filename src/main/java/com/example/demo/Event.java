@@ -16,7 +16,7 @@ public class Event {
     private LocalTime hendEvent;
     private String lieuEvent;
     // LIEN
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "id_image")
     private Image image;
 

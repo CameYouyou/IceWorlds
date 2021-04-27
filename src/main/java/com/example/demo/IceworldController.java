@@ -59,4 +59,36 @@ public class IceworldController {
         return iceworldService.recupeAttraction();
     }
 
+    // Evenements
+    @PostMapping("ajoutevent")
+    public void createEvent (@RequestBody Event newEvent){
+        iceworldService.addEvent(newEvent);
+        System.out.println(newEvent.getIdEvent());
+    }
+    @GetMapping("afficherevent")
+    public List<Event> afficherEvent(){
+        return iceworldService.recupeEvent();
+    }
+
+    // Avis
+    @PostMapping("ajoutavis")
+    public void createAvis (@RequestBody Avis newAvis){
+        iceworldService.addAvis(newAvis);
+        System.out.println(newAvis.getIdAvis());
+    }
+    @GetMapping("afficheravis")
+    public List<Avis> afficherAvis(){
+        return iceworldService.recupeAvis();
+    }
+
+    // Moniteur
+    @PostMapping("ajoutmoniteur")
+    public void createMono (@RequestBody Moniteur newMono){
+        iceworldService.addMono(newMono);
+        System.out.println(newMono.getIdMoniteur());
+    }
+    @GetMapping("affichermoniteur")
+    public List<Moniteur> afficherMono(){
+        return iceworldService.recupeMono();
+    }
 }
