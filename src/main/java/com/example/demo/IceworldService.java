@@ -57,11 +57,22 @@ public class IceworldService {
         return eventRepository.findAll();
     }
 
-    public void addAvis(Avis newAvis){
-        avisRepository.save(newAvis);
+    public int addAvis(double feedback){
+        Avis avis = avisRepository.findById(1L).get();
+        int newNb = avis.getNbAvis() + 1;
+        double newScore = avis.getScoreAvis() + feedback;
+        avis.setNbAvis(newNb);
+        avis.setScoreAvis(newScore);
+        int percent =(int) (newScore/newNb) * 100;
+        avisRepository.save(avis);
+        return percent;
     }
-    public List<Avis> recupeAvis() {
-        return avisRepository.findAll();
+    public int recupeAvis() {
+        Avis avis = avisRepository.findById(1L).get();
+        int nb = avis.getNbAvis();
+        double score = avis.getScoreAvis();
+        int percent =(int) (score/nb) * 100;
+        return percent;
     }
 
     public void addMono(Moniteur newMono){

@@ -11,7 +11,7 @@ public class Avis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idAvis;
     private int nbAvis;
-    private int scoreAvis;
+    private double scoreAvis;
 
     // CONSTRUCTEUR
     public Avis(int nbAvis, int scoreAvis) {
@@ -36,10 +36,10 @@ public class Avis {
         this.nbAvis = nbAvis;
     }
 
-    public int getScoreAvis() {
+    public double getScoreAvis() {
         return scoreAvis;
     }
-    public void setScoreAvis(int scoreAvis) {
+    public void setScoreAvis(double scoreAvis) {
         this.scoreAvis = scoreAvis;
     }
 }

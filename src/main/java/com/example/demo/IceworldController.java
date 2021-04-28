@@ -73,12 +73,12 @@ public class IceworldController {
 
     // Avis
     @PostMapping("ajoutavis")
-    public void createAvis (@RequestBody Avis newAvis){
-        iceworldService.addAvis(newAvis);
-        System.out.println(newAvis.getIdAvis());
+    public int createAvis (@RequestBody double feedback){
+        System.out.println(feedback);
+        return iceworldService.addAvis(feedback);
     }
     @GetMapping("afficheravis")
-    public List<Avis> afficherAvis(){
+    public int afficherAvis(){
         return iceworldService.recupeAvis();
     }
 
