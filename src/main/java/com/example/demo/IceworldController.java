@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class IceworldController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class IceworldController {
     }
 
     @GetMapping("afficherclients")
-    @CrossOrigin(origins = "*")
+
     public List<Client> afficherclients(){
         return iceworldService.recupeClient();
     }
