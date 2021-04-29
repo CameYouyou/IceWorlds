@@ -33,6 +33,8 @@ public class IceworldService {
         reservationRepository.save(newResa);
     }
     public List<Reservation> recupeResa() {
+    //    Reservation resa = reservationRepository.findAll().get();
+    //    int nbPeople = resa.getNbPersonne() + resa.getNbEnfant();
         return reservationRepository.findAll();
     }
 
