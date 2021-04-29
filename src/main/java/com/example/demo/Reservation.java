@@ -9,12 +9,11 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idReservation;
-    @Column(name = "nb_personne")
-    private int nbReservation;
+    private int nbPersonne;
+    private int nbEnfant;
     private LocalDate startReservation;
     private LocalDate endReservation;
     // Liens
-    // @ManyToOne(cascade = {CascadeType.ALL})
     @ManyToOne
     @JoinColumn(name = "id_client")
     private Client client;
@@ -23,8 +22,9 @@ public class Reservation {
     private List<Logement> logements;
 
     // CONSTRUCTEUR
-    public Reservation(int nbReservation, LocalDate startReservation, LocalDate endReservation, Client client, List<Logement> logements) {
-        this.nbReservation = nbReservation;
+    public Reservation(int nbPersonne, int nbEnfant, LocalDate startReservation, LocalDate endReservation, Client client, List<Logement> logements) {
+        this.nbPersonne = nbPersonne;
+        this.nbEnfant = nbEnfant;
         this.startReservation = startReservation;
         this.endReservation = endReservation;
         this.client = client;
@@ -41,11 +41,18 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public int getNbReservation() {
-        return nbReservation;
+    public int getNbPersonne() {
+        return nbPersonne;
     }
-    public void setNbReservation(int nbReservation) {
-        this.nbReservation = nbReservation;
+    public void setNbPersonne(int nbPersonne) {
+        this.nbPersonne = nbPersonne;
+    }
+
+    public int getNbEnfant() {
+        return nbEnfant;
+    }
+    public void setNbEnfant(int nbEnfant) {
+        this.nbEnfant = nbEnfant;
     }
 
     public LocalDate getStartReservation() {
