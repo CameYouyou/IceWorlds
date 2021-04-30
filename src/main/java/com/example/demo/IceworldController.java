@@ -20,7 +20,6 @@ public class IceworldController {
     }
 
     @GetMapping("afficherclients")
-
     public List<Client> afficherclients(){
         return iceworldService.recupeClient();
     }
@@ -37,6 +36,16 @@ public class IceworldController {
         return iceworldService.recupeResa();
     }
 
+    @DeleteMapping("deleteresa/{idresa}")
+    public void supResa (@PathVariable("idresa") Long idresa){
+        iceworldService.supResa(idresa);
+    }
+
+    //@PutMapping("modifresa/{idResa}")
+    //public void modifResa (@RequestBody Reservation updateResa){
+    //    iceworldService.modifReservation(updateResa);
+    //}
+
     // Logements
     @PostMapping("ajoutlogement")
     public void createLogement (@RequestBody Logement newLogement){
@@ -47,6 +56,11 @@ public class IceworldController {
     @GetMapping("afficherlogement")
     public List<Logement> afficherlogement(){
         return iceworldService.recupeLogement();
+    }
+
+    @DeleteMapping("deleteloge/{idloge}")
+    public void supLoge (@PathVariable("idloge") Long idloge){
+        iceworldService.supLoge(idloge);
     }
 
     // Attractions
@@ -91,5 +105,9 @@ public class IceworldController {
     @GetMapping("affichermoniteur")
     public List<Moniteur> afficherMono(){
         return iceworldService.recupeMono();
+    }
+    @DeleteMapping("deletemono/{idMono}")
+    public void supMono (@PathVariable("idMono") Long idmono){
+        iceworldService.supMono(idmono);
     }
 }

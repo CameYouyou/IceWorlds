@@ -22,6 +22,7 @@ public class IceworldService {
     @Autowired
     MoniteurRepository moniteurRepository;
 
+    // Client
     public void addClient(Client newClient){
         clientRepository.save(newClient);
     }
@@ -29,22 +30,32 @@ public class IceworldService {
         return clientRepository.findAll();
     }
 
+    // Reservation
     public void addReservation(Reservation newResa){
         reservationRepository.save(newResa);
     }
     public List<Reservation> recupeResa() {
-    //    Reservation resa = reservationRepository.findAll().get();
-    //    int nbPeople = resa.getNbPersonne() + resa.getNbEnfant();
         return reservationRepository.findAll();
     }
+    public void supResa (Long idresa){
+        reservationRepository.deleteById(idresa);
+    }
+    //public void modifReservation(Reservation modifResa){
+    //    reservationRepository.save(modifResa);
+    //}
 
+    // Logement
     public void addLogement(Logement newLogement){
         logementRepository.save(newLogement);
     }
     public List<Logement> recupeLogement() {
         return logementRepository.findAll();
     }
+    public void supLoge (Long idlogement){
+        logementRepository.deleteById(idlogement);
+    }
 
+    // Attraction
     public void addAttraction(Attraction newAttraction){
         attractionRepository.save(newAttraction);
     }
@@ -52,6 +63,7 @@ public class IceworldService {
         return attractionRepository.findAll();
     }
 
+    // Event
     public void addEvent(Event newEvent){
         eventRepository.save(newEvent);
     }
@@ -59,6 +71,7 @@ public class IceworldService {
         return eventRepository.findAll();
     }
 
+    // Avis
     public int addAvis(double feedback){
         Avis avis = avisRepository.findById(1L).get();
         int newNb = avis.getNbAvis() + 1;
@@ -77,10 +90,14 @@ public class IceworldService {
         return percent;
     }
 
+    // Mono
     public void addMono(Moniteur newMono){
         moniteurRepository.save(newMono);
     }
     public List<Moniteur> recupeMono() {
         return moniteurRepository.findAll();
+    }
+    public void supMono (Long idmono){
+        moniteurRepository.deleteById(idmono);
     }
 }
