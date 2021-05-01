@@ -58,10 +58,11 @@ public class IceworldController {
         return iceworldService.recupeLogement();
     }
 
-    @DeleteMapping("deleteloge/{idloge}")
-    public void supLoge (@PathVariable("idloge") Long idloge){
-        iceworldService.supLoge(idloge);
+    @DeleteMapping("deletelogement/{idloge}")
+    public void supLogement (@PathVariable("idloge") Long idloge){
+        iceworldService.supLogement(idloge);
     }
+
 
     // Attractions
     @PostMapping("ajoutattraction")

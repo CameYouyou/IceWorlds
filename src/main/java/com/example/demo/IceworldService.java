@@ -51,8 +51,8 @@ public class IceworldService {
     public List<Logement> recupeLogement() {
         return logementRepository.findAll();
     }
-    public void supLoge (Long idlogement){
-        logementRepository.deleteById(idlogement);
+    public void supLogement (Long idloge){
+        logementRepository.deleteById(idloge);
     }
 
     // Attraction
