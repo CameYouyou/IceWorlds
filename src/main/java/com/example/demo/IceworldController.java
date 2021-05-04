@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+// pour acceder a tous les pors
 @CrossOrigin(origins = "*")
 public class IceworldController {
 
@@ -41,10 +42,10 @@ public class IceworldController {
         iceworldService.supResa(idresa);
     }
 
-    //@PutMapping("modifresa/{idResa}")
-    //public void modifResa (@RequestBody Reservation updateResa){
-    //    iceworldService.modifReservation(updateResa);
-    //}
+    /*@PutMapping("modifresa/{idResa}")
+    public void modifResa (@RequestBody Reservation updateResa){
+        iceworldService.modifReservation(updateResa);
+    }*/
 
     // Logements
     @PostMapping("ajoutlogement")

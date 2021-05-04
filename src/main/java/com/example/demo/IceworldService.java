@@ -40,9 +40,9 @@ public class IceworldService {
     public void supResa (Long idresa){
         reservationRepository.deleteById(idresa);
     }
-    //public void modifReservation(Reservation modifResa){
-    //    reservationRepository.save(modifResa);
-    //}
+    /*public void modifReservation(Reservation modifResa){
+        reservationRepository.save(modifResa);
+    }*/
 
     // Logement
     public void addLogement(Logement newLogement){
