@@ -86,7 +86,7 @@ public class IceworldService {
         Avis avis = avisRepository.findById(1L).get();
         int nb = avis.getNbAvis();
         double score = avis.getScoreAvis();
-        int percent =(int) (score/nb) * 100;
+        int percent = (int) (score/nb) * 100;
         return percent;
     }
 
